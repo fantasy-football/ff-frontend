@@ -1,0 +1,86 @@
+.aboutComponent {
+    background: white;
+    height: 100%;
+}
+.banner img {
+    width: 100%;
+}
+
+.aboutCardContainer {
+    background: white;
+    margin-right: 0;
+    margin-left: 0;
+    margin-top: 4em;
+    padding: 0;
+}
+
+.loginContainer {
+    background: #353d67;
+    padding-bottom: 3em;  
+    margin:0; 
+}
+
+
+.pickSquadContainer
+{
+    background:#de264a;
+    padding-bottom: 3em;
+    margin:0;
+    padding-top: 3em;
+}
+
+.pickSquadHeader {
+    font-size: 1em;
+}
+.pickSquadText {
+    color: #ffffcd;
+    font-size: 0.9em;
+}
+
+.pickSquadContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.loginWrapper {
+    margin-top: 10%;
+}  
+
+.loginContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+.loginHeader {
+    color: #00ff87;
+    font-weight: 400;
+    font-size: 1em;
+}
+
+.loginText {
+    margin-top: 4%;
+    color: #ffffcd;
+    font-size: 0.9em;
+}
+
+.loginButton {
+    position: absolute;
+    min-width: 10em;
+    width: 50%;
+    max-width: 50%;
+    max-height: 3em;
+    background: #00ff87;
+    margin: 0 auto;
+    bottom: 0;
+    margin-left: 10%;
+    color : #353d67;
+    margin-right: 10%;
+}
+
+.loginButtonWrapper {
+    position: relative;
+}
+

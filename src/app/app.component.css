@@ -1,0 +1,127 @@
+.teamlogo {
+        margin-top: 1%;
+        margin-left: 20px;
+    }
+
+
+.teamlogo-head, .teamlogo-foot {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.teamlogo img{
+    max-width: 40px;
+    max-height: 21px;
+    opacity: 0.8;
+
+}
+
+.teamlogo img:hover {
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    opacity: 1;
+}
+
+.teamlogo-foot {
+    margin-top: 10px;
+}
+
+@media only screen and (max-width: 991px) {
+    .teamlogo {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 62em) {
+    .navbar {
+    margin-top: 20px;
+    max-height: 4em;
+    }
+}
+
+
+.navbar {
+    background-color: #353d67;
+}
+
+.navbar-brand img{
+    padding-bottom: 2em;
+}
+@media only screen and (min-width: 62em) {
+
+    .navbar-nav li{
+        padding-left: 2em;
+        padding-right: 2em;
+        opacity: 0.9;
+    }
+}
+
+.nav-link
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    color: #ffffcd !important;
+    font-weight: bold;
+}
+
+@media only screen and (min-width: 62em) {
+    .navbar-nav a:hover {
+        border-bottom: 4px solid red;
+        padding-bottom: 2%;
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 62em)
+{
+    .navbar 
+    {
+        height: 100%;
+        padding: 0;
+    }
+    .navbar-toggler
+    {
+        
+        color: white;
+        width: 2em;
+    }
+
+    .navbar-brand
+    {
+        display: none;
+    }
+
+    .navbar-nav {
+        margin-top: 5px;
+        padding-left: 0.8em;
+    }
+
+    .navbar-nav li{
+        border-bottom: 3px solid green;
+        padding-left: 0.8em; 
+    }
+
+    .navbar-toggler-icon {
+        height: 0.75em;
+        width: 0.75em;
+    }
+
+    .nav-link {
+        font-size: 0.6em;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-weight: 800;
+        color: #ffffcd !important;
+    }
+    
+    .navbar-nav
+    {
+        padding: 0;
+        margin: 0;
+    }
+
+    #navbarContent {
+        background: #52c39e;
+    }
+}
