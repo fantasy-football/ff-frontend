@@ -1,6 +1,6 @@
 .aboutComponent {
     background: white;
-    height: 100%;
+    height: 100%;   
 }
 .banner img {
     width: 100%;
@@ -10,77 +10,150 @@
     background: white;
     margin-right: 0;
     margin-left: 0;
-    margin-top: 4em;
     padding: 0;
+
 }
 
 .loginContainer {
-    background: #353d67;
-    padding-bottom: 3em;  
-    margin:0; 
+    margin: 0; 
 }
 
-
-.pickSquadContainer
-{
-    background:#de264a;
-    padding-bottom: 3em;
-    margin:0;
-    padding-top: 3em;
-}
-
-.pickSquadHeader {
-    font-size: 1em;
-}
-.pickSquadText {
-    color: #ffffcd;
-    font-size: 0.9em;
-}
-
-.pickSquadContent {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.loginWrapper {
-    margin-top: 10%;
-}  
-
-.loginContent{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    
+.pickSquadContainer {
+    margin: 0;
 }
 
 .loginHeader {
     color: #00ff87;
     font-weight: 400;
-    font-size: 1em;
 }
 
 .loginText {
-    margin-top: 4%;
     color: #ffffcd;
     font-size: 0.9em;
 }
 
 .loginButton {
-    position: absolute;
-    min-width: 10em;
-    width: 50%;
-    max-width: 50%;
-    max-height: 3em;
     background: #00ff87;
-    margin: 0 auto;
-    bottom: 0;
-    margin-left: 10%;
     color : #353d67;
-    margin-right: 10%;
 }
 
-.loginButtonWrapper {
-    position: relative;
+.pickSquadText {
+    color: #ffffcd;
+    font-size: 0.9em;
 }
 
+.pickSquadHeader {
+    font-size: 1em;
+}
+
+@media screen and (min-width: 993px) 
+{
+    
+
+    .aboutCardContainer {
+        
+        margin-top: 4em;
+    }
+
+    .loginContainer {
+        padding-bottom: 3em;
+        background: #353d67;  
+    }
+
+
+    .pickSquadContainer
+    {
+        background:#de264a;
+        padding-bottom: 3em;
+        padding-top: 3em;
+    }
+    
+    .pickSquadContent {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .loginWrapper {
+        margin-top: 10%;
+    }  
+
+    .loginContent {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .loginHeader {
+        
+        font-size: 1em;
+    }
+
+    .loginText {
+        margin-top: 4%;
+        
+    }
+
+    .loginButton {
+        position: absolute;
+        min-width: 10em;
+        width: 50%;
+        max-width: 50%;
+        max-height: 3em;
+        margin: 0 auto;
+        bottom: 0;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .loginButtonWrapper {
+        position: relative;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .loginContainer {
+        background: #353d67;
+        padding-top: 2em;
+        padding-bottom: 3em;
+    }
+
+    .pickSquadContainer {
+        background:#de264a;
+        padding-top: 2em;
+        padding-bottom: 2em;
+    }
+
+    .loginHeader {
+        font-size: 1.25em;
+    }
+
+    .loginText {
+        margin-top: 1em;
+    }
+
+    .loginButton {
+        margin-top: 2em;
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+        text-align: center;
+    }
+
+    .img-fluid {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .pickSquadHeader {
+        margin-top: 1em;
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+
+    .pickSquadText {
+        margin-top: 0.6em;
+        color: yellow;
+        font-size: 0.9em;
+    }
+}
