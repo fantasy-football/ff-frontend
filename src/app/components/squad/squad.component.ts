@@ -1,0 +1,236 @@
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { FormControl } from '@angular/forms';
+import { Player } from '../../services/interfaces/player';
+
+@Component({
+  selector: 'app-squad',
+  templateUrl: './squad.component.html',
+  styleUrls: ['./squad.component.css']
+})
+export class SquadComponent implements OnInit {
+
+  playerControl = new FormControl();
+
+  players: Player[];
+  filteredPlayers: Player[];
+
+  def: Player[];
+  mid: Player[];
+  fwd: Player[];
+  squad: Player[];
+  gk: Player[];
+
+  balance: number;
+  teamCounter: number[];
+  playerCount: number;
+
+  squadLimitExceeded: boolean;
+  validatedSquad: boolean;
+  budgetExeeded: boolean;
+
+  isMobileDevice: boolean;
+  showSquadMenu: boolean;
+  showPlayerMenu: boolean;
+
+  filters = [
+    {
+      'name': 'Position',
+      'options': [
+        {'value': 'GK', 'view': 'Goalkeepers'},
+        {'value': 'DEF', 'view': 'Defenders'},
+        {'value': 'MID', 'view': 'Midfielders'},
+        {'value': 'FW', 'view': 'Forwards'},
+      ]
+    },
+    {
+      'name': 'Team',
+      'options' : [
+        {'value': 'ARG', 'view': 'Argentina'},
+        {'value': 'ENG', 'view': 'England'}
+      ]
+    }
+  ];
+
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  ngOnInit() {
+
+
+    this.def = [];
+    this.mid = [];
+    this.fwd = [];
+    this.gk = [];
+
+    this.squad = [];
+
+    this.playerCount = 0;
+    this.balance = 100;
+
+    this.validatedSquad = false;
+    this.squadLimitExceeded = false;
+    this.budgetExeeded = false;
+
+    this.teamCounter = new Array<number>(32).fill(0);
+
+    this.checkMobileDevice();
+
+    this.http.get('http://192.168.0.4:8000/v1/api/players')
+    .subscribe(res => {
+      this.players = res['data'];
+      console.log(this.players);
+      this.filteredPlayers = res['data'];
+    });
+  }
+
+  checkMobileDevice(): void {
+    if (window.innerWidth < 992) {
+      this.isMobileDevice = true;
+      this.showSquadMenu = true;
+      this.showPlayerMenu = false;
+    } else {
+      this.isMobileDevice = false;
+      this.showSquadMenu = true;
+      this.showPlayerMenu = true;
+    }
+
+  }
+
+  toggleMenu(): void {
+    if (this.isMobileDevice) {
+      this.showPlayerMenu = !this.showPlayerMenu;
+      this.showSquadMenu = !this.showSquadMenu;
+    }
+
+  }
+
+  applyFilter(option: string) {
+    if (!option) {
+      this.filteredPlayers = this.players;
+    } else if (option === 'GK' || option === 'DEF' || option === 'MID' || option === 'FW') {
+      this.filterByPosition(option);
+    } else {
+      this.filterByTeam(option);
+    }
+  }
+
+  addPlayer(player: Player) {
+    if (this.balance >= player.value) {
+      if ( this.teamCounter[player.teamId - 1] > 3 ) {
+        console.log('This should not happen, resetting squad');
+        this.squad = [];
+      } else if ( this.teamCounter[player.teamId - 1] === 3) {
+        console.log('Cant have more than 3 players from 1 team');
+        this.squadLimitExceeded = true;
+      } else {
+        if (player.position === 'DEF') {
+          if (this.def.length < 5) {
+            this.def.push(player);
+            this.squad.push(player);
+            this.teamCounter[player.teamId - 1]++;
+            this.playerCount++;
+            this.balance -= player.value;
+          } else {
+            console.log('Defender limit exceeded');
+            this.squadLimitExceeded = true;
+          }
+        } else if (player.position === 'MID') {
+          if (this.mid.length < 5) {
+            this.mid.push(player);
+            this.squad.push(player);
+            this.teamCounter[player.teamId - 1]++;
+            this.playerCount++;
+            this.balance -= player.value;
+          } else {
+          console.log('Midfielder limit exceeded');
+          this.squadLimitExceeded = true;
+          }
+        } else if (player.position === 'FW') {
+          if (this.fwd.length < 3) {
+            this.fwd.push(player);
+            this.squad.push(player);
+            this.teamCounter[player.teamId - 1]++;
+            this.playerCount++;
+            this.balance -= player.value;
+          } else {
+            console.log('Forward limit exceeded');
+            this.squadLimitExceeded = true;
+          }
+        } else if (player.position === 'GK') {
+          if (this.gk.length < 2) {
+            this.gk.push(player);
+            this.squad.push(player);
+            this.teamCounter[player.teamId - 1]++;
+            this.playerCount++;
+            this.balance -= player.value;
+          } else {
+            console.log('Goalkeeper limit exceeded');
+            this.squadLimitExceeded = true;
+          }
+        }
+      }
+    } else {
+      console.log('Budget Exceeded');
+    }
+
+    this.toggleMenu();
+  }
+
+  filterByPosition(position: string) {
+    this.filteredPlayers = [];
+    for ( let i = 0; i < this.players.length; i++  ) {
+        if (this.players[i].position === position) {
+          this.filteredPlayers.push(this.players[i]);
+        }
+    }
+  }
+
+  filterByTeam(trigram: string) {
+    this.filteredPlayers = [];
+    for ( let i = 0; i < this.players.length; i++ ) {
+      if (this.players[i].trigram === trigram) {
+        this.filteredPlayers.push(this.players[i]);
+      }
+    }
+  }
+
+  resetSquad() {
+    this.filteredPlayers = this.players;
+    this.balance = 100;
+    this.playerCount = 0;
+    this.squad = [];
+    this.def = [];
+    this.mid = [];
+    this.fwd = [];
+    this.gk = [];
+    this.teamCounter.fill(0);
+  }
+
+  deletePlayer(player: Player) {
+    if (player.position === 'GK') {
+      this.squad = this.squad.filter(object => object !== player);
+      this.gk = this.gk.filter(object => object !== player );
+    } else if (player.position === 'DEF') {
+      this.squad = this.squad.filter(object => object !== player);
+      this.def = this.def.filter(object => object !== player );
+    } else if (player.position === 'MID' ) {
+      this.squad = this.squad.filter(object => object !== player);
+      this.mid = this.mid.filter(object => object !== player );
+    } else if (player.position === 'FW' ) {
+      this.squad = this.squad.filter(object => object !== player);
+      this.fwd = this.fwd.filter(object => object !== player );
+    } else {
+      console.log('Invalid action triggered');
+      this.resetSquad();
+      return;
+    }
+
+    this.playerCount--;
+    this.teamCounter[player.teamId - 1]--;
+    this.balance += player.value;
+
+  }
+
+}

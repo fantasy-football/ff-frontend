@@ -1,0 +1,142 @@
+<img src="../../../assets/custombanner.png" class="customBanner" alt="">
+<div class="container">
+  <div class = "row">
+    <div class = "col-lg-8 col-md-12" [hidden]=!showSquadMenu>
+      <div class = "squadTableHeader">
+        <div *ngIf = "playerCount===0">
+          <button class = "btn btn-primary squadTableButton" disabled> Reset </button>
+        </div>
+        <div *ngIf = "playerCount!=0">
+            <button class = "btn btn-primary squadTableButton" (click) = "resetSquad()"> Reset </button>
+        </div>
+        <div class = "playersSelected">
+          <div class="playersSelectedHeader">Players Selected</div>
+          <div class="playersSelectedCount">{{ playerCount }}/15</div> 
+        </div>
+        <div class = "moneyRemaining">
+          <div class="moneyRemainingHeader">Money Remaining</div>
+          <div class="moneyRemainingValue"> ${{ balance }}m</div>
+        </div>
+      </div>
+      <table class="table table-responsive squadTable">
+        <thead class=""></thead>
+        <colgroup>
+          <col span="1" style="width: 5%;">
+          <col span="1" style="width: 60%;">
+          <col span="1" style="width: 15%;">
+          <col span="1" style="width: 20%;">
+      </colgroup>
+        <tbody>
+          <tr class="gkTableHeader tableHeader table-sm">
+            <th></th>
+            <th>Goalkeepers</th>
+            <th>$</th>
+            <th>TP</th>
+          </tr>
+          <tr *ngFor="let i of [0,1]">
+            <td *ngIf = "gk[i]"><img class="selectionIcon" src="../../../assets/cross.png" alt="" (click)="deletePlayer(gk[i])"></td>
+            <td *ngIf = "gk[i]" >{{ gk[i].name }}</td>
+            <td *ngIf = "gk[i]">{{gk[i].value}}</td>
+            <td *ngIf = "!gk[i]"></td>
+            <td *ngIf = "!gk[i]" (click)="toggleMenu()"> Select Player</td>
+            <td *ngIf = "!gk[i]"></td>
+            <td *ngIf = "!gk[i]"></td>
+          </tr>
+          <tr class="defTableHeader tableHeader table-sm">
+            <th></th>
+            <th>Defenders</th>
+            <th>$</th>
+            <th>TP</th>
+          </tr>
+          <tr *ngFor="let i of [0,1,2,3,4]">
+              <td *ngIf = "def[i]"><img class="selectionIcon" src="../../../assets/cross.png" alt="" (click)="deletePlayer(def[i])"></td>
+              <td *ngIf = "def[i]" >{{ def[i].name }}</td>
+              <td *ngIf = "def[i]">{{def[i].value}}</td>
+              <td *ngIf = "!def[i]"></td>
+              <td *ngIf = "!def[i]" (click)="toggleMenu()"> Select Player</td>
+              <td *ngIf = "!def[i]"></td>
+              <td *ngIf = "!def[i]"></td>
+          </tr>
+          <tr class="midTableHeader tableHeader table-sm">
+            <th></th>
+            <th>Midfielders</th>
+            <th>$</th>
+            <th>TP</th>
+          </tr>
+          <tr *ngFor="let i of [0,1,2,3,4]">
+              <td *ngIf = "mid[i]"><img class="selectionIcon" src="../../../assets/cross.png" alt="" (click)="deletePlayer(mid[i])"></td>
+              <td *ngIf = "mid[i]" >{{ mid[i].name }}</td>
+              <td *ngIf = "mid[i]">{{mid[i].value}}</td>
+              <td *ngIf = "!mid[i]"></td>
+              <td *ngIf = "!mid[i]" (click)="toggleMenu()"> Select Player</td>
+              <td *ngIf = "!mid[i]"></td>
+              <td *ngIf = "!mid[i]"></td>
+          </tr>
+         
+          <tr class="fwdTableHeader tableHeader table-sm">
+            <th></th>
+            <th>Forwards</th>
+            <th>$</th>
+            <th>TP</th>
+          </tr>    
+          <tr *ngFor="let i of [0,1,2]">
+            <td *ngIf = "fwd[i]"><img class="selectionIcon" src="../../../assets/cross.png" alt="" (click)="deletePlayer(fwd[i])"></td>
+            <td *ngIf = "fwd[i]">{{ fwd[i].name }}</td>
+            <td *ngIf = "fwd[i]">{{fwd[i].value}}</td>
+            <td *ngIf = "!fwd[i]"></td>
+            <td *ngIf = "!fwd[i]" (click)="toggleMenu()"> Select Player</td>
+            <td *ngIf = "!fwd[i]"></td>
+            <td *ngIf = "!fwd[i]"></td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf = "validatedSquad">
+        <button  class = "btn btn-primary submitSquad" >Enter Squad</button>
+      </div>
+      <div *ngIf = "!validatedSquad">
+          <button  class = "btn btn-primary submitSquad" disabled>Enter Squad</button>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-12 playerSelection" [hidden]="!showPlayerMenu">
+        <div class = "filterBox">
+          <div class = "filterBoxTop"></div>
+          <div class="filterBoxHeader">Player Selection</div>
+          <div class="filterView"></div>
+          <mat-form-field>
+              <mat-select placeholder="Apply a filter" [formControl]="playerControl" (selectionChange)="applyFilter($event.value)">
+                <mat-option>None</mat-option>
+                <mat-optgroup *ngFor="let filter of filters" [label]="filter.name">
+                  <mat-option *ngFor="let option of filter.options" [value]="option.value">
+                    {{ option.view }}
+                  </mat-option>
+                </mat-optgroup>
+              </mat-select>
+          </mat-form-field>
+        </div>         
+        <table class="table table-responsive selectionTable">
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>$</th>
+            </tr>
+            <tbody *ngIf="players">
+              <tr *ngFor="let record of filteredPlayers">
+                <td (click)="addPlayer(record)">
+                  <img class="selectionIcon" src="../../../assets/add.png" alt="">
+                </td>
+                <td>
+                  <span>
+                   <img class="img-fluid squadTeamImage" src="../../../assets/teams/{{record.trigram}}.png" alt="">
+                   {{ record.name }}
+                  </span>
+                </td>
+                <td>
+                  {{ record.value }}
+                </td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+  </div>
+</div>
+
