@@ -1,33 +1,24 @@
-<!--
-<div class="parent">
-  <img src="../../../assets/pitch2.png" class="image1" alt="">
-  <div class = "gkBox">
-      <img src="../../../assets/tshirt.png" alt="">
-    <img src="../../../assets/tshirt.png" alt="">
-  </div>
-  <div class = "defBox">
-      <img src="../../../assets/tshirt.png" alt="">
-      <img src="../../../assets/tshirt.png" alt="">
-      <img src="../../../assets/tshirt.png" alt="">
-      <img src="../../../assets/tshirt.png" alt="">
-      <img src="../../../assets/tshirt.png" alt="">
-  </div>
-  <div class = "midBox">
-      <img src="../../../assets/tshirt.png" alt="">
-      <img src="../../../assets/tshirt.png" alt="">
-      <img src="../../../assets/tshirt.png" alt="">
-      <img src="../../../assets/tshirt.png" alt="">
-      <img src="../../../assets/tshirt.png" alt="">
-  </div>
-</div>
--->
-
-<div class="parent">
-  <img src="../../../assets/pitch2.png" class="image1" alt="">
-  <div class = "gkBox">
-      <div class="gkContainer">
-        <img src="../../../assets/tshirt.png" alt="">
-        <p> Add goalkeeper </p>
-      </div>
-  </div>
+<div class="content">
+  <h2>Ranklist</h2>
+  <table class="table table-responsive">
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Points</th>
+    </tr>
+    <tbody *ngIf="ranklist">
+      <tr *ngFor="let record of ranklist; let i=index">
+        <td>
+          {{ record.rank }}
+        </td>
+        <td>
+          <img src="{{ record.pic }}" alt="" class="propic">
+          {{ record.name }}
+        </td>
+        <td>
+          {{ record.score }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

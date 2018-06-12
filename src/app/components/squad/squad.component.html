@@ -25,7 +25,7 @@
           <col span="1" style="width: 60%;">
           <col span="1" style="width: 15%;">
           <col span="1" style="width: 20%;">
-      </colgroup>
+        </colgroup>
         <tbody>
           <tr class="gkTableHeader tableHeader table-sm">
             <th></th>
@@ -38,7 +38,7 @@
             <td *ngIf = "gk[i]" >{{ gk[i].name }}</td>
             <td *ngIf = "gk[i]">{{gk[i].value}}</td>
             <td *ngIf = "!gk[i]"></td>
-            <td *ngIf = "!gk[i]" (click)="toggleMenu()"> Select Player</td>
+            <td *ngIf = "!gk[i]" (click)="toggleMenu('GK')"> Select Player</td>
             <td *ngIf = "!gk[i]"></td>
             <td *ngIf = "!gk[i]"></td>
           </tr>
@@ -53,7 +53,7 @@
               <td *ngIf = "def[i]" >{{ def[i].name }}</td>
               <td *ngIf = "def[i]">{{def[i].value}}</td>
               <td *ngIf = "!def[i]"></td>
-              <td *ngIf = "!def[i]" (click)="toggleMenu()"> Select Player</td>
+              <td *ngIf = "!def[i]" (click)="toggleMenu('DEF')"> Select Player</td>
               <td *ngIf = "!def[i]"></td>
               <td *ngIf = "!def[i]"></td>
           </tr>
@@ -68,7 +68,7 @@
               <td *ngIf = "mid[i]" >{{ mid[i].name }}</td>
               <td *ngIf = "mid[i]">{{mid[i].value}}</td>
               <td *ngIf = "!mid[i]"></td>
-              <td *ngIf = "!mid[i]" (click)="toggleMenu()"> Select Player</td>
+              <td *ngIf = "!mid[i]" (click)="toggleMenu('MID')"> Select Player</td>
               <td *ngIf = "!mid[i]"></td>
               <td *ngIf = "!mid[i]"></td>
           </tr>
@@ -84,14 +84,52 @@
             <td *ngIf = "fwd[i]">{{ fwd[i].name }}</td>
             <td *ngIf = "fwd[i]">{{fwd[i].value}}</td>
             <td *ngIf = "!fwd[i]"></td>
-            <td *ngIf = "!fwd[i]" (click)="toggleMenu()"> Select Player</td>
+            <td *ngIf = "!fwd[i]" (click)="toggleMenu('FWD')"> Select Player</td>
             <td *ngIf = "!fwd[i]"></td>
             <td *ngIf = "!fwd[i]"></td>
+          </tr>  
+        </tbody>
+      </table>
+        
+      <table class="table table-responsive squadTable">
+        <thead class=""></thead>
+        <colgroup>
+            <col span="1" style="width: 5%;">
+            <col span="1" style="width: 95%;">
+        </colgroup>
+        <tbody>
+          <tr class="substituteTableHeader tableHeader table-sm">
+            <th></th>
+            <th>Substitutes</th>
+          </tr>
+          <tr *ngFor="let i of [0,1,2,3]">
+            <td *ngIf = "substitutes[i]"><img class="selectionIcon" src="../../../assets/cross.png" alt="" (click)="deletePlayer(fwd[i])"></td>
+            <td *ngIf = "substitutes[i]">{{ substitutes[i].name }}</td>
+            <td *ngIf = "!substitutes[i]"></td>
+            <td *ngIf = "!substitutes[i]" (click)="toggleMenu('SUB')"> Select Substitute</td>
           </tr>
         </tbody>
       </table>
+      <div class="selectButtons">
+          <mat-form-field>
+              <mat-select placeholder="Captain" (selectionChange)="setCaptain($event.value)">
+                <mat-option *ngFor="let player of squad" [value]="player">
+                  {{ player.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select placeholder="Vice Captain" (selectionChange)="setVC($event.value)">
+                  <mat-option *ngFor="let player of squad" [value]="player">
+                    <div *ngIf = "!captain">
+                    {{ player.name }}
+                    </div>
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>                    
+      </div>
       <div *ngIf = "validatedSquad">
-        <button  class = "btn btn-primary submitSquad" >Enter Squad</button>
+        <button  class = "btn btn-primary submitSquad" (click)="submitSquad()" >Enter Squad</button>
       </div>
       <div *ngIf = "!validatedSquad">
           <button  class = "btn btn-primary submitSquad" disabled>Enter Squad</button>
@@ -102,7 +140,7 @@
           <div class = "filterBoxTop"></div>
           <div class="filterBoxHeader">Player Selection</div>
           <div class="filterView"></div>
-          <mat-form-field>
+          <mat-form-field class="filterForm">
               <mat-select placeholder="Apply a filter" [formControl]="playerControl" (selectionChange)="applyFilter($event.value)">
                 <mat-option>None</mat-option>
                 <mat-optgroup *ngFor="let filter of filters" [label]="filter.name">
@@ -113,7 +151,8 @@
               </mat-select>
           </mat-form-field>
         </div>         
-        <table class="table table-responsive selectionTable">
+        <div class="selectionTableFrame">
+          <table class="table table-responsive selectionTable">
             <tr>
               <th>#</th>
               <th>Name</th>
@@ -121,9 +160,16 @@
             </tr>
             <tbody *ngIf="players">
               <tr *ngFor="let record of filteredPlayers">
-                <td (click)="addPlayer(record)">
+                <div *ngIf="!playerInSquad(record)">
+                  <td (click)="addPlayer(record)">
                   <img class="selectionIcon" src="../../../assets/add.png" alt="">
-                </td>
+                  </td>
+                </div>
+                <div *ngIf="playerInSquad(record)">
+                  <td (click) = "addSubstitute(record)">
+                    <img class="selectionIcon" src="../../../assets/addblue.png" alt="">
+                  </td>
+                </div>
                 <td>
                   <span>
                    <img class="img-fluid squadTeamImage" src="../../../assets/teams/{{record.trigram}}.png" alt="">
@@ -135,7 +181,8 @@
                 </td>
               </tr>
             </tbody>
-        </table>
+          </table>
+        </div>
     </div>
   </div>
 </div>

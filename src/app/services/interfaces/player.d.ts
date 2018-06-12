@@ -6,5 +6,5 @@ export interface Player
     points: number,
     trigram: string,
     value: number,
-    teamId: number
+    teamId: number,
 }

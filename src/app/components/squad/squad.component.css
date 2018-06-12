@@ -30,6 +30,12 @@ table {
     
 }
 
+.substituteTableHeader {
+    background: #74c8ea;
+    margin-top: 2em;
+    text-align: center;
+}
+
 .tableHeaderIcon {
     text-align: center;
 }
@@ -140,7 +146,7 @@ td {
     max-height: 20px;
 }
 
-.mat-form-field {
+.filterForm {
 
     background: #e8e8e8;
     min-width: 60%;
@@ -182,4 +188,16 @@ td {
 
 .squadTable td{
     padding-left: 0.4rem;
+}
+
+.selectButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.selectionTableFrame {
+    min-height: 500px;
+    max-height: 9%;
+    overflow-y: scroll;
 }

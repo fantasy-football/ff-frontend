@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormControl } from '@angular/forms';
 import { Player } from '../../services/interfaces/player';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-squad',
@@ -20,6 +21,15 @@ export class SquadComponent implements OnInit {
   fwd: Player[];
   squad: Player[];
   gk: Player[];
+  substitutes: Player[];
+
+  captain: Player;
+  viceCaptain: Player;
+
+  subGk: number;
+  subDef: number;
+  subMid: number;
+  subFwd: number;
 
   balance: number;
   teamCounter: number[];
@@ -40,20 +50,27 @@ export class SquadComponent implements OnInit {
         {'value': 'GK', 'view': 'Goalkeepers'},
         {'value': 'DEF', 'view': 'Defenders'},
         {'value': 'MID', 'view': 'Midfielders'},
-        {'value': 'FW', 'view': 'Forwards'},
+        {'value': 'FWD', 'view': 'Forwards'},
       ]
     },
     {
       'name': 'Team',
       'options' : [
         {'value': 'ARG', 'view': 'Argentina'},
-        {'value': 'ENG', 'view': 'England'}
+        {'value': 'ENG', 'view': 'England'},
+        {'value': 'FRA', 'view': 'France'},
+        {'value': 'MAR', 'view': 'Morocco'},
+        {'value': 'ISL', 'view': 'Iceland'},
+        {'value': 'CRC', 'view': 'Costa Rica'},
+        {'value': 'ESP', 'view': 'Spain'},
+        {'value': 'BRA', 'view': 'Brazil'},
+        {'value': 'PER', 'view': 'Peru'}
       ]
     }
   ];
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient, private apiService: ApiService
   ) { }
 
   ngOnInit() {
@@ -65,9 +82,17 @@ export class SquadComponent implements OnInit {
     this.gk = [];
 
     this.squad = [];
+    this.substitutes = [];
+
+    this.captain = null;
+    this.viceCaptain = null;
 
     this.playerCount = 0;
     this.balance = 100;
+    this.subGk = 0;
+    this.subDef = 0;
+    this.subMid = 0;
+    this.subFwd = 0;
 
     this.validatedSquad = false;
     this.squadLimitExceeded = false;
@@ -77,11 +102,11 @@ export class SquadComponent implements OnInit {
 
     this.checkMobileDevice();
 
-    this.http.get('http://192.168.0.4:8000/v1/api/players')
+    this.apiService.getPlayers()
     .subscribe(res => {
-      this.players = res['data'];
+      this.players = res;
       console.log(this.players);
-      this.filteredPlayers = res['data'];
+      this.filteredPlayers = res;
     });
   }
 
@@ -98,23 +123,28 @@ export class SquadComponent implements OnInit {
 
   }
 
-  toggleMenu(): void {
+
+  toggleMenu(position: string): void {
     if (this.isMobileDevice) {
       this.showPlayerMenu = !this.showPlayerMenu;
       this.showSquadMenu = !this.showSquadMenu;
     }
 
+    if (position) {
+      this.filterByPosition(position);
+    }
   }
 
   applyFilter(option: string) {
     if (!option) {
       this.filteredPlayers = this.players;
-    } else if (option === 'GK' || option === 'DEF' || option === 'MID' || option === 'FW') {
+    } else if (option === 'GK' || option === 'DEF' || option === 'MID' || option === 'FWD') {
       this.filterByPosition(option);
     } else {
       this.filterByTeam(option);
     }
   }
+
 
   addPlayer(player: Player) {
     if (this.balance >= player.value) {
@@ -147,7 +177,7 @@ export class SquadComponent implements OnInit {
           console.log('Midfielder limit exceeded');
           this.squadLimitExceeded = true;
           }
-        } else if (player.position === 'FW') {
+        } else if (player.position === 'FWD') {
           if (this.fwd.length < 3) {
             this.fwd.push(player);
             this.squad.push(player);
@@ -175,15 +205,67 @@ export class SquadComponent implements OnInit {
       console.log('Budget Exceeded');
     }
 
-    this.toggleMenu();
+    this.toggleMenu(null);
+
+    if (this.squad.length === 15 && this.substitutes.length === 4) {
+      this.validatedSquad = true;
+    }
+  }
+
+  addSubstitute(player: Player) {
+    if (this.playerInSquad(player)) {
+      if (player.position === 'GK' && this.subGk === 0) {
+        this.substitutes.push(player);
+        this.subGk++;
+      } else if ((this.substitutes.length - this.subGk) < 3 ) {
+        if (player.position === 'DEF' && this.subDef < 2) {
+          this.subDef++;
+          this.substitutes.push(player);
+        } else  if (player.position === 'MID' && this.subMid < 2) {
+          this.subMid++;
+          this.substitutes.push(player);
+        } else  if (player.position === 'FWD' && this.subFwd < 2) {
+          this.subFwd++;
+          this.substitutes.push(player);
+        } else {
+          console.log('Sub limit reached');
+        }
+      }
+    } else {
+      console.log('Invalid action triggered');
+    }
+
+    console.log(player, this.substitutes.length);
+    if (this.substitutes.length === 4 && this.squad.length === 15) {
+      this.validatedSquad = true;
+    }
+  }
+
+  deleteSubstitute(player: Player) {
+    if (player.position === 'GK') {
+      this.subGk--;
+    } else if (player.position === 'DEF') {
+      this.subDef--;
+    } else if (player.position === 'MID') {
+      this.subMid--;
+    } else if (player.position === 'FWD') {
+      this.subFwd--;
+    } else {
+      console.log('Invalid action triggered');
+      this.resetSquad();
+    }
   }
 
   filterByPosition(position: string) {
     this.filteredPlayers = [];
-    for ( let i = 0; i < this.players.length; i++  ) {
+    if (position === 'SUB') {
+      this.filteredPlayers = this.squad;
+    } else {
+      for ( let i = 0; i < this.players.length; i++  ) {
         if (this.players[i].position === position) {
           this.filteredPlayers.push(this.players[i]);
         }
+      }
     }
   }
 
@@ -205,32 +287,96 @@ export class SquadComponent implements OnInit {
     this.mid = [];
     this.fwd = [];
     this.gk = [];
+    this.substitutes = [];
+    this.subDef = 0;
+    this.subGk = 0;
+    this.subMid = 0;
+    this.subFwd = 0;
     this.teamCounter.fill(0);
+    this.validatedSquad = false;
+    this.squadLimitExceeded = false;
   }
 
   deletePlayer(player: Player) {
+    const inSub = this.playerInSub(player);
     if (player.position === 'GK') {
-      this.squad = this.squad.filter(object => object !== player);
       this.gk = this.gk.filter(object => object !== player );
+      if (inSub) {
+        this.subGk--;
+      }
     } else if (player.position === 'DEF') {
-      this.squad = this.squad.filter(object => object !== player);
       this.def = this.def.filter(object => object !== player );
+      if (inSub) {
+        this.subDef--;
+      }
     } else if (player.position === 'MID' ) {
-      this.squad = this.squad.filter(object => object !== player);
       this.mid = this.mid.filter(object => object !== player );
-    } else if (player.position === 'FW' ) {
-      this.squad = this.squad.filter(object => object !== player);
+      if (inSub) {
+        this.subMid--;
+      }
+    } else if (player.position === 'FWD' ) {
       this.fwd = this.fwd.filter(object => object !== player );
+      if (inSub) {
+        this.subFwd--;
+      }
     } else {
       console.log('Invalid action triggered');
       this.resetSquad();
       return;
     }
 
+    this.squad = this.squad.filter(object => object !== player);
+    this.substitutes = this.substitutes.filter(object => object !== player);
+
     this.playerCount--;
     this.teamCounter[player.teamId - 1]--;
     this.balance += player.value;
 
+    if (this.validatedSquad) {
+      this.validatedSquad = false;
+    }
+  }
+
+  playerInSquad(player: Player): boolean {
+    for ( let s = 0; s < this.squad.length; s++) {
+      if ( this.squad[s] === player ) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  playerInSub(player: Player): boolean {
+    for ( let s = 0; s < this.substitutes.length; s++) {
+      if ( this.substitutes[s] === player ) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  setCaptain(player: Player) {
+    this.captain = player;
+  }
+
+  setVC(player: Player) {
+    this.viceCaptain = player;
+  }
+
+  submitSquad() {
+    console.log('Called submit Squad');
+    const payload = {
+      'squad': (this.squad),
+      'subs': (this.substitutes),
+      'captain': (this.captain),
+      'vc': (this.viceCaptain)
+    };
+
+    this.http.post('http://localhost:8000/v1/api/submitSquad',
+                   JSON.stringify(payload), { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) })
+                  .subscribe( res => { console.log(res); });
   }
 
 }
