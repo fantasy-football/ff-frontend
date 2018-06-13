@@ -52,6 +52,11 @@ export class AuthService {
     localStorage.setItem('expires_at', (expiresAt));
     this.setLoggedIn(true);
 
+    this.http.get(COMMON_ROOT + '/token')
+    .pipe(res => res,
+    retry(2),
+    catchError(this.handleError));
+
     return this.http.post(COMMON_ROOT + '/signin',
       {
         'access_token': authResult.accessToken
