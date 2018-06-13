@@ -13,10 +13,13 @@ import { SquadComponent } from './components/squad/squad.component';
 import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
 import { CallbackComponent } from './components/callback/callback.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { TeamComponent } from './components/team/team.component';
 
 import { ApiService } from './services/api.service';
 import { AuthService } from './services/auth.service';
+import { CommonService } from './services/common.service';
 import { AuthGuard } from './services/auth.guard';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import { AuthGuard } from './services/auth.guard';
     SquadComponent,
     LeaderboardComponent,
     CallbackComponent,
-    ProfileComponent
+    ProfileComponent,
+    TeamComponent
   ],
   imports: [
     BrowserModule,
@@ -47,8 +51,10 @@ import { AuthGuard } from './services/auth.guard';
   ],
   providers: [
     ApiService,
+    CommonService,
     AuthService,
-    AuthGuard
+    AuthGuard,
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

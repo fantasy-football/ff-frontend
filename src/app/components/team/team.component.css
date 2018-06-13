@@ -1,0 +1,192 @@
+.pitchBox {
+    position: relative;
+    margin: 0 auto;
+}
+
+.pitch {
+    position: relative;
+}
+
+.gkIconPitch {
+    max-width: 10%;
+}
+
+.teamIconPitch {
+    max-width: 60px;
+    height: auto;
+}
+
+.gkPitchBox {
+    position: absolute;
+    top: 6%;
+    left: 15%;
+    right: 15%;
+    display: flex;
+    justify-content: center;
+}
+.defPitchBox {
+    position: absolute;
+    top: 22%;
+    left: 13%;
+    right: 13%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.midPitchBox {
+    position: absolute;
+    top: 40%;
+    left: 9%;
+    right: 9%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+.fwdPitchBox {
+    position: absolute;
+    top: 60%;
+    left: 12%;
+    right: 12%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.pitchContainer {
+    display: flex;
+    justify-content: center;
+    min-height: 480px;
+}
+
+.playerIconContainer {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.subBox {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+@media screen and (min-width: 993px) {
+    .playerIconContainer {
+        width: 17%;
+    }
+
+    .gkPitchBox {
+        height: 80px;
+    }
+
+    .defPitchBox {
+        height: 80px;
+
+    }
+
+    .midPitchBox {
+        height: 100px;
+    }
+
+    .fwdPitchBox {
+        height: 80px;
+    }
+
+    .playerName {
+        width: 100%;
+        text-align: center;
+        color: #fffeee;
+        font-size: 10px;
+        font-weight: bold;
+        background: #00753b;
+        margin-top: 10px;
+        margin-bottom: 0;
+        max-height: 18px;
+    }
+
+    .playerPoints {
+        width: 100%;
+        text-align: center;
+        color: #fffeee;
+        font-size: 10px;
+        font-weight: bold;
+        background: #08ed81;
+        max-height: 12px;
+        margin-top: 0;
+    }
+
+    .subBox {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-evenly;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .playerIconContainer {
+        width: 19%;
+    }
+
+    .playerName {
+        min-width: 100%;
+        text-align: center;
+        color: #fffeee;
+        font-size: 10px;
+        font-weight: bold;
+        background: #00753b;
+        margin-top: 3px;
+        margin-bottom: 0;
+        max-height: 18px;
+    }
+
+    .playerPoints {
+        min-width: 100%;
+        text-align: center;
+        color: #fffeee;
+        font-size: 10px;
+        font-weight: bold;
+        background: #08ed81;
+        max-height: 12px;
+        margin-top: 0;
+    }
+
+    .subBox {
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .teamIconPitch {
+        max-height: 21px;
+    }
+
+    .playerName {
+        min-width: 100%;
+        text-align: center;
+        color: #fffeee;
+        font-size: 7px;
+        font-weight: bold;
+        background: #00753b;
+        margin-top: 3px;
+        margin-bottom: 0;
+        max-height: 10px;
+    }
+
+    .playerPoints {
+        min-width: 100%;
+        text-align: center;
+        color: #fffeee;
+        font-size: 7px;
+        font-weight: bold;
+        background: #08ed81;
+        max-height: 10px;
+        margin-top: 0;
+    }
+
+    .img-fluid {
+        min-height: 450px;
+    }
+}

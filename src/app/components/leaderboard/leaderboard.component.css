@@ -1,6 +1,14 @@
-table {
+.container-fluid {
+    margin: 0;
+    padding: 0;
+    margin-top: 2em;
+}
+
+.table {
     font-size: 30px;
     color: #b9b9b9;
+    display: table;
+    
 }
 
 .propic {
@@ -8,5 +16,19 @@ table {
       height: 45px;
       border-radius: 100%;
       margin-right: 1em;
-  
+      z-index: 1;
+}
+
+.points {
+    margin-left: 2em;
+}
+
+td {
+    font-size: 0.7em;
+    color: black;
+}
+
+th {
+    background: black;
+    color: #ffff;
 }

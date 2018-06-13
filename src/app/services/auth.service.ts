@@ -8,7 +8,7 @@ import { retry, catchError, map } from 'rxjs/operators';
 import { AUTH_CONFIG } from '../../environments/auth-env';
 import { BehaviorSubject } from 'rxjs';
 
-const COMMON_ROOT = 'http://localhost:8000/v1';
+const COMMON_ROOT = 'http://192.168.0.4:8000/v1';
 
 @Injectable({
   providedIn: 'root'
@@ -33,14 +33,8 @@ export class AuthService {
   loggedIn$ = new BehaviorSubject<boolean>(false);
   constructor(
     private router: Router,
-    private http: HttpClient
-  ) {
-        this.http.get(COMMON_ROOT + '/token',
-        {
-          withCredentials: true
-        })
-        .subscribe(res => console.log(res));
-  }
+    private http: HttpClient,
+  ) { }
 
 
   private setLoggedIn(value: boolean) {
@@ -78,11 +72,10 @@ export class AuthService {
         window.location.hash = '';
         this.setSession(authResult)
         .subscribe(res => {
-          console.log(res);
-          setTimeout(() => {
-          this.router.navigate(['/profile']);
-          }, 3000);
-        });
+          console.log('Set Session', res);
+          this.router.navigate(['/profile']); },
+          error  => this.router.navigate(['/'])
+        );
       } else if (err) {
         console.error(`Error: ${err.error}`);
         this.router.navigate(['/']);

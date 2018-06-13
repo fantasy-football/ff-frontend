@@ -1,7 +1,7 @@
 <div class="profileContainer">
   <div class = "container-fluid">
     <div class = "profileWrapper">
-      <div *ngIf="user">
+      <div class="profileContent" *ngIf="user">
         <div ><img src={{user.pic}} alt = "loading" class = "profilePic"></div>
         <div class = "username">{{ user.name }}</div>
         <div class = "userpoints">Points: {{ user.score }}</div>

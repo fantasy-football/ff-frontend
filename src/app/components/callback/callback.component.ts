@@ -9,20 +9,16 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./callback.component.css']
 })
 export class CallbackComponent implements OnInit, OnDestroy {
-  loggedInSub: Subscription;
   constructor(private auth: AuthService, private router: Router) {
       auth.handleLoginCallback();
    }
 
 
   ngOnInit() {
-    this.loggedInSub = this.auth.loggedIn$.subscribe(
-      loggedIn => loggedIn ? this.router.navigate(['/profile']) : null
-    );
+
   }
 
   ngOnDestroy() {
-    this.loggedInSub.unsubscribe();
   }
 
 }

@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormControl } from '@angular/forms';
 import { Player } from '../../services/interfaces/player';
 import { ApiService } from '../../services/api.service';
+import { CommonService } from '../../services/common.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-squad',
@@ -42,6 +44,7 @@ export class SquadComponent implements OnInit {
   isMobileDevice: boolean;
   showSquadMenu: boolean;
   showPlayerMenu: boolean;
+  createdSquad: boolean;
 
   filters = [
     {
@@ -70,12 +73,8 @@ export class SquadComponent implements OnInit {
   ];
 
   constructor(
-    private http: HttpClient, private apiService: ApiService
-  ) { }
-
-  ngOnInit() {
-
-
+    private http: HttpClient, private apiService: ApiService, private commonService: CommonService, private router: Router
+  ) {
     this.def = [];
     this.mid = [];
     this.fwd = [];
@@ -97,10 +96,21 @@ export class SquadComponent implements OnInit {
     this.validatedSquad = false;
     this.squadLimitExceeded = false;
     this.budgetExeeded = false;
+    this.createdSquad = false;
 
     this.teamCounter = new Array<number>(32).fill(0);
 
     this.checkMobileDevice();
+
+   }
+
+  ngOnInit() {
+    this.commonService.getUserDetails()
+    .subscribe(res => {
+      if (res['flag']) {
+        this.router.navigate(['/lineup']);
+      }
+    });
 
     this.apiService.getPlayers()
     .subscribe(res => {
@@ -207,7 +217,7 @@ export class SquadComponent implements OnInit {
 
     this.toggleMenu(null);
 
-    if (this.squad.length === 15 && this.substitutes.length === 4) {
+    if (this.squad.length === 15 && this.substitutes.length === 4 && this.captain && this.viceCaptain ) {
       this.validatedSquad = true;
     }
   }
@@ -236,7 +246,7 @@ export class SquadComponent implements OnInit {
     }
 
     console.log(player, this.substitutes.length);
-    if (this.substitutes.length === 4 && this.squad.length === 15) {
+    if ( this.substitutes.length === 4 && this.squad.length === 15 && this.captain && this.viceCaptain ) {
       this.validatedSquad = true;
     }
   }
@@ -359,10 +369,16 @@ export class SquadComponent implements OnInit {
 
   setCaptain(player: Player) {
     this.captain = player;
+    if ( this.substitutes.length === 4 && this.squad.length === 15 && this.captain && this.viceCaptain ) {
+      this.validatedSquad = true;
+    }
   }
 
   setVC(player: Player) {
     this.viceCaptain = player;
+    if ( this.substitutes.length === 4 && this.squad.length === 15 && this.captain && this.viceCaptain ) {
+      this.validatedSquad = true;
+    }
   }
 
   submitSquad() {
@@ -374,9 +390,7 @@ export class SquadComponent implements OnInit {
       'vc': (this.viceCaptain)
     };
 
-    this.http.post('http://localhost:8000/v1/api/submitSquad',
-                   JSON.stringify(payload), { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) })
-                  .subscribe( res => { console.log(res); });
+    this.apiService.submitSquad(payload).subscribe(res => console.log(res));
   }
 
 }

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { retry, catchError, map } from 'rxjs/operators';
 
-const API_ROOT = 'http://localhost:8000/v1/api/';
+const API_ROOT = 'http://192.168.0.4:8000/v1/api/';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,19 @@ export class ApiService {
       );
   }
 
-  submitSquad() {}
+  submitSquad(payload) {
+    return this.http.post(API_ROOT + 'submitSquad',
+                   JSON.stringify(payload), {withCredentials: true})
+                   .pipe(catchError(this.handleError));
+  }
+
+  getLineup() {
+    return this.http.get(API_ROOT + 'lineup', {withCredentials: true})
+      .pipe(map(res => res['data']),
+        retry(2),
+        catchError(this.handleError)
+    );
+  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
