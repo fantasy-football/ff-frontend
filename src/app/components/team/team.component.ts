@@ -32,6 +32,7 @@ export class TeamComponent implements OnInit {
     this.apiService.getLineup()
     .subscribe(res => {
       this.lineup = res;
+      console.log(res);
       this.extract();
     });
   }
@@ -40,6 +41,7 @@ export class TeamComponent implements OnInit {
     for (let i = 0; i < 11; i++) {
       if (this.lineup[i].position === 'GK') {
         this.gk.push(this.lineup[i]);
+        console.log(this.lineup[i].isSub);
       } else if (this.lineup[i].position === 'DEF') {
         this.def.push(this.lineup[i]);
       } else if (this.lineup[i].position === 'MID') {

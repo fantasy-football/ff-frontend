@@ -8,7 +8,7 @@ import { retry, catchError, map } from 'rxjs/operators';
 import { AUTH_CONFIG } from '../../environments/auth-env';
 import { BehaviorSubject } from 'rxjs';
 
-const COMMON_ROOT = 'http://192.168.0.4:8000/v1';
+const COMMON_ROOT = 'http://localhost:8000/v1';
 
 @Injectable({
   providedIn: 'root'
@@ -92,14 +92,16 @@ export class AuthService {
       withCredentials: true
     })
     .subscribe(res => {
-      this.router.navigate(['/signin']);
-    });
+      this.router.navigate(['/']);
+    },
+    err => console.log(err));
   }
 
   public authenticated(): boolean {
     // Check whether the user is logged in.
     const expiresAt = (JSON.parse(localStorage.getItem('expires_at')));
     const access_token = (localStorage.getItem('access_token'));
+    console.log(access_token != null);
     return ( new Date().getTime() < expiresAt ) && (access_token != null);
   }
 

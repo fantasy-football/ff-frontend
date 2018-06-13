@@ -13,7 +13,12 @@
           <div class="loginText"> With 32 teams and over 700 players to choose from, it's tailor made for the World Cup and you can win great prizes.</div>
         </div>
         <div class="col-lg-5 col-md-12 loginButtonWrapper">
-          <button class="btn btn-primary loginButton" (click)="auth.login()">Login</button>
+          <div *ngIf="!auth.authenticated()">
+            <button class="btn btn-primary loginButton" (click)="auth.login()">Login</button>
+          </div>
+          <div *ngIf="auth.authenticated()">
+            <button class="btn btn-primary loginButton" (click)="auth.logout()">Logout</button>
+          </div>
         </div>
        </div>
     </div>

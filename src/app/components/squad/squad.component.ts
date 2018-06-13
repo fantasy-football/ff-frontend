@@ -6,6 +6,7 @@ import { ApiService } from '../../services/api.service';
 import { CommonService } from '../../services/common.service';
 import { Router } from '@angular/router';
 
+import {} from '../../../../angular2-custom-modal';
 @Component({
   selector: 'app-squad',
   templateUrl: './squad.component.html',
@@ -390,7 +391,10 @@ export class SquadComponent implements OnInit {
       'vc': (this.viceCaptain)
     };
 
-    this.apiService.submitSquad(payload).subscribe(res => console.log(res));
+    this.apiService.submitSquad(payload).subscribe(res => {
+      console.log(res);
+      this.router.navigate(['/lineup']);
+    });
   }
 
 }

@@ -14,12 +14,14 @@ import { LeaderboardComponent } from './components/leaderboard/leaderboard.compo
 import { CallbackComponent } from './components/callback/callback.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { TeamComponent } from './components/team/team.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 import { ApiService } from './services/api.service';
 import { AuthService } from './services/auth.service';
 import { CommonService } from './services/common.service';
 import { AuthGuard } from './services/auth.guard';
 import { CookieService } from 'ngx-cookie-service';
+import { RulesComponent } from './components/rules/rules.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { CookieService } from 'ngx-cookie-service';
     LeaderboardComponent,
     CallbackComponent,
     ProfileComponent,
-    TeamComponent
+    TeamComponent,
+    ModalComponent,
+    RulesComponent
   ],
   imports: [
     BrowserModule,

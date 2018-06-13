@@ -1,0 +1,25 @@
+.stageOne {
+    display: flex;
+    flex-direction: column;
+}
+
+.stageTwo {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.stageThree {
+    display: flex;
+    flex-direction: column;
+}
+
+.stageFour {
+    display: flex;
+    flex-direction: column;
+}
+
+.stageFive {
+    display: flex;
+    flex-direction: column;
+}

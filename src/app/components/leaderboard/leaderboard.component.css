@@ -8,7 +8,7 @@
     font-size: 30px;
     color: #b9b9b9;
     display: table;
-    
+    border: none;
 }
 
 .propic {
@@ -25,10 +25,25 @@
 
 td {
     font-size: 0.7em;
-    color: black;
+    color: #fff;
+    border: none;
+    
 }
 
 th {
-    background: black;
+    background: #141515;
     color: #ffff;
+    
+}
+
+tbody {
+    border: none;
+}
+
+tr:nth-child(even) {
+    background: #1c1f1f;
+}
+
+tr:nth-child(odd) {
+    background: #272a2a;
 }
