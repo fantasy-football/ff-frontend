@@ -1,25 +1,125 @@
 .stageOne {
     display: flex;
     flex-direction: column;
+    background-color: #5e21ed;
 }
 
 .stageTwo {
     display: flex;
     flex-direction: column;
-    
+    background-color: #21b0ed;
+    align-items: flex-end;
 }
 
 .stageThree {
     display: flex;
     flex-direction: column;
+    background-color: #ed5e21;
 }
 
 .stageFour {
     display: flex;
     flex-direction: column;
+    background-color: #ed215e;
+    align-items: flex-end;
 }
 
 .stageFive {
     display: flex;
     flex-direction: column;
+    background-color: #b0ed21;
+}
+
+.timeLine {
+    font-weight: bold;
+    color: #fff;
+    font-size: 1.5em;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 1%;
+}
+
+.limit {
+    margin-top: 1%;
+    margin-left: 2%;
+    margin-right: 2%;
+    font-size: .9em;
+}
+.content {
+    margin-top: 1%;
+    padding-bottom: 3%;
+    margin-left: 2%;
+    margin-right: 2%;
+    font-size: .9em;
+
+}
+
+.rulesHeader {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+}
+
+.rulesSubHeadText {
+    margin-bottom: 10%;
+    text-align: center;
+    margin-top: 3%;
+    font-size: 1.5em;
+    color: #fff;
+}
+
+.rulesPositive {
+    background: #356861;
+    width:50%;
+    padding-bottom: 3%;
+}
+
+.rulesNegative {
+    background: #353c68;
+    width: 50%;
+}
+
+.gainRule {
+    text-align: center;
+    color: #ffffcd;
+}
+.playerCategory {
+    padding-top: 2%;
+    background: #de264a;
+    margin-top: 4%;
+}
+.playerRoles{
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    color: #fff;
+    font-weight: bold;
+}
+.roles{
+    text-align: left;
+    margin-left: 3%;
+    font-size: .9em;
+    color: #fff;
+}
+
+.subrole {
+    padding-bottom: 3%;
+}
+
+.toprole {
+    margin-top: 1%;
+}
+
+.tailNote {
+    margin-top: 2%;
+    font-size: 0.75em;
+}
+
+.routeHeader {
+    margin-top: 2%;
+    margin-bottom: 4%;
+    text-align: center;
+    font-weight: bold;
 }
