@@ -113,8 +113,9 @@
 }
 
 .tailNote {
-    margin-top: 2%;
-    font-size: 0.75em;
+    
+    padding-bottom: 2%;
+    font-size: 0.8em;
     margin-left: 3%;
 }
 
@@ -124,3 +125,11 @@
     text-align: center;
     font-weight: bold;
 }
+
+.squadFixed {
+    font-size: 0.9em;
+    margin-left: 3%;
+    font-weight: bold;
+    margin-top: 2%;
+}
+
