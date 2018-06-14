@@ -9,6 +9,8 @@ import * as $ from 'jquery';
 
 export class ModalComponent implements OnInit, OnDestroy {
     @Input() id: string;
+    bodyText: string;
+
     private element: JQuery;
 
     constructor(private el: ElementRef) {
@@ -31,7 +33,7 @@ export class ModalComponent implements OnInit, OnDestroy {
         this.element.on('click', function (e: any) {
             const target = $(e.target);
             if (!target.closest('.modal-body').length) {
-                modal.close();
+                modal.closeModal();
             }
         });
 
@@ -52,7 +54,7 @@ export class ModalComponent implements OnInit, OnDestroy {
     }
 
     // close modal
-    close(): void {
+    closeModal(): void {
         this.element.hide();
         $('body').removeClass('modal-open');
     }

@@ -17,7 +17,8 @@ const routes: Routes = [
   {path: 'callback', component: CallbackComponent},
   {path: 'profile', component: ProfileComponent, canActivate: [ AuthGuard ] },
   {path: 'lineup', component: TeamComponent, canActivate: [ AuthGuard ] },
-  {path: 'rules', component: RulesComponent}
+  {path: 'rules', component: RulesComponent},
+  {path: '**', redirectTo: '/'}
 ];
 
 @NgModule({

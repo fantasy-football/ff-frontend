@@ -3,7 +3,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { retry, catchError, map } from 'rxjs/operators';
 
-const COMMON_ROOT = 'http://localhost:8000/v1';
+const COMMON_ROOT = 'http://35.200.194.225:8000';
+
 @Injectable({
   providedIn: 'root'
 })

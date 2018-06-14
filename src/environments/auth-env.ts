@@ -9,7 +9,7 @@ interface AuthConfig {
 export const AUTH_CONFIG: AuthConfig = {
     CLIENT_DOMAIN: 'wcfl.auth0.com',
     CLIENT_ID: 'QYxP0DrtRGpNTn2OrB9iyjzCHdMmp32t',
-    REDIRECT: 'http://localhost:4200/callback',
+    REDIRECT: 'http://wcfl.excelmec.org/callback',
     AUDIENCE: 'https://wcfl.auth0.com/userinfo',
     SCOPE: 'openid profile email'
 };

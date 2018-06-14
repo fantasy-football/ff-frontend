@@ -8,7 +8,7 @@ import { retry, catchError, map } from 'rxjs/operators';
 import { AUTH_CONFIG } from '../../environments/auth-env';
 import { BehaviorSubject } from 'rxjs';
 
-const COMMON_ROOT = 'http://localhost:8000/v1';
+const COMMON_ROOT = 'http://35.200.194.225:8000';
 
 @Injectable({
   providedIn: 'root'
