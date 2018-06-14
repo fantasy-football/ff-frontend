@@ -22,6 +22,9 @@ import { CommonService } from './services/common.service';
 import { AuthGuard } from './services/auth.guard';
 import { CookieService } from 'ngx-cookie-service';
 import { RulesComponent } from './components/rules/rules.component';
+import { Error404Component } from './components/error404/error404.component';
+import { MaintenanceComponent } from './components/maintenance/maintenance.component';
+import { FixturesComponent } from './components/fixtures/fixtures.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { RulesComponent } from './components/rules/rules.component';
     ProfileComponent,
     TeamComponent,
     ModalComponent,
-    RulesComponent
+    RulesComponent,
+    Error404Component,
+    MaintenanceComponent,
+    FixturesComponent
   ],
   imports: [
     BrowserModule,
