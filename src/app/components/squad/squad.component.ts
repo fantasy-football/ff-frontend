@@ -6,7 +6,6 @@ import { ApiService } from '../../services/api.service';
 import { CommonService } from '../../services/common.service';
 import { Router } from '@angular/router';
 
-import {} from '../../../../angular2-custom-modal';
 @Component({
   selector: 'app-squad',
   templateUrl: './squad.component.html',
