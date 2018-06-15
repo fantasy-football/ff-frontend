@@ -1,5 +1,5 @@
 <img src="../../../assets/custombanner.png" class="customBanner" alt="">
-<div class="container">
+<div class="container squadPageContainer">
   <div class = "row">
     <div class = "col-lg-8 col-md-12" [hidden]=!showSquadMenu>
       <div class = "squadTableHeader">
@@ -103,7 +103,7 @@
             <th>Substitutes</th>
           </tr>
           <tr *ngFor="let i of [0,1,2,3]">
-            <td *ngIf = "substitutes[i]"><img class="selectionIcon" src="../../../assets/cross.png" alt="" (click)="deletePlayer(fwd[i])"></td>
+            <td *ngIf = "substitutes[i]"><img class="selectionIcon" src="../../../assets/cross.png" alt="" (click)="deleteSubstitute(substitutes[i])"></td>
             <td *ngIf = "substitutes[i]">{{ substitutes[i].name }}</td>
             <td *ngIf = "!substitutes[i]"></td>
             <td *ngIf = "!substitutes[i]" (click)="toggleMenu('SUB')"> Select Substitute</td>
