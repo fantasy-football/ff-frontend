@@ -77,7 +77,7 @@ export class AuthService {
         window.location.hash = '';
         this.setSession(authResult)
         .subscribe(res => {
-          console.log('Set Session', res);
+          // console.log('Set Session', res);
           this.router.navigate(['/profile']); },
           error  => this.router.navigate(['/'])
         );
@@ -106,7 +106,7 @@ export class AuthService {
     // Check whether the user is logged in.
     const expiresAt = (JSON.parse(localStorage.getItem('expires_at')));
     const access_token = (localStorage.getItem('access_token'));
-    console.log(access_token != null);
+    // console.log(access_token != null);
     return ( new Date().getTime() < expiresAt ) && (access_token != null);
   }
 

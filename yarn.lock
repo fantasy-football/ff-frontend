@@ -228,6 +228,10 @@
   dependencies:
     "@types/jasmine" "*"
 
+"@types/jquery@^3.3.2":
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.3.2.tgz#8700226bdde24b6f98e3a60126dbaab3b2a3ab41"
+
 "@types/node@^6.0.46":
   version "6.0.112"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.112.tgz#0f37473b1d1ecd30c8bf57215ef4fb558f99cc86"
@@ -4071,6 +4075,10 @@ ng-bootstrap@^1.6.3:
   resolved "https://registry.yarnpkg.com/ng-bootstrap/-/ng-bootstrap-1.6.3.tgz#d41fd42154c0593422cb83c473a3828aa7525bf5"
   dependencies:
     moment "2.18.1"
+
+ngx-cookie-service@^1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/ngx-cookie-service/-/ngx-cookie-service-1.0.10.tgz#dc17ff4f1a0224cf3b0c7a7f52bff2b798396e3d"
 
 no-case@^2.2.0:
   version "2.3.2"

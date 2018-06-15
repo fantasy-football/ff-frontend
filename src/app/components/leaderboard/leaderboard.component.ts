@@ -17,7 +17,7 @@ export class LeaderboardComponent implements OnInit {
 
   ngOnInit() {
     if ( this.auth.authenticated() ) {
-      console.log('Authenticated');
+      // console.log('Authenticated');
     } else {
       this.router.navigate(['/']);
     }
@@ -25,7 +25,7 @@ export class LeaderboardComponent implements OnInit {
     this.common.getRanklist()
     .subscribe( res => {
       this.ranklist = res;
-      console.log(this.ranklist);
+      // console.log(this.ranklist);
     });
   }
 

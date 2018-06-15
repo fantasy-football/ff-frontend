@@ -129,7 +129,7 @@
               </mat-form-field>                    
       </div>
       <div *ngIf = "validatedSquad">
-        <button  class = "btn btn-primary submitSquad btn-disabled" disabled (click)="submitSquad()" >Enter Squad</button>
+        <button  class = "btn btn-primary submitSquad" (click)="submitSquad()" >Enter Squad</button>
       </div>
       <div *ngIf = "!validatedSquad">
           <button  class = "btn btn-primary submitSquad" disabled>Enter Squad</button>

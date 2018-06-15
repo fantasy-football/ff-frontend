@@ -15,13 +15,15 @@ import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
   {path: '', component: AboutComponent, pathMatch: 'full' },
-  // {path: 'selection', component: SquadComponent, canActivate: [ AuthGuard ]},
-  // {path: 'leaderboard', component: LeaderboardComponent, canActivate: [ AuthGuard ] },
-  // {path: 'callback', component: CallbackComponent},
-  // {path: 'profile', component: ProfileComponent, canActivate: [ AuthGuard ] },
-  // {path: 'lineup', component: TeamComponent, canActivate: [ AuthGuard ] },
-  // {path: 'rules', component: RulesComponent},
-  // {path: 'fixtures', component: FixturesComponent},
+  {path: 'selection', component: SquadComponent},
+  {path: 'leaderboard', component: LeaderboardComponent, canActivate: [ AuthGuard ] },
+  {path: 'callback', component: CallbackComponent},
+  {path: 'profile', component: ProfileComponent, canActivate: [ AuthGuard ] },
+  {path: 'lineup', component: TeamComponent, canActivate: [ AuthGuard ] },
+  {path: 'rules', component: RulesComponent},
+  {path: 'fixtures', component: FixturesComponent},
+
+  /*
   {path: 'selection', redirectTo: '/maintenance'},
   {path: 'leaderboard', redirectTo: '/maintenance'},
   {path: 'callback', redirectTo: '/maintenance'},
@@ -30,6 +32,8 @@ const routes: Routes = [
   {path: 'rules', redirectTo: '/maintenance'},
   {path: 'fixtures', redirectTo: '/maintenance'},
   {path: 'maintenance', component: MaintenanceComponent},
+  */
+
   {path: '**', component: Error404Component}
 ];
 

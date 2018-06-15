@@ -22,7 +22,7 @@ export class ModalComponent implements OnInit, OnDestroy {
 
         // ensure id attribute exists
         if (!this.id) {
-            console.error('modal must have an id');
+            // console.error('modal must have an id');
             return;
         }
 
