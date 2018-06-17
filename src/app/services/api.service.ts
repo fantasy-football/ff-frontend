@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { throwError } from 'rxjs';
 import { retry, catchError, map } from 'rxjs/operators';
 
-const API_ROOT = 'http://35.200.194.225:8000/api/';
+const API_ROOT = '//wcfl.excelmec.org/v1/api/';
 
 @Injectable({
   providedIn: 'root'

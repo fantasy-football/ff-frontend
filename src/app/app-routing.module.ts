@@ -14,19 +14,20 @@ import { FixturesComponent } from './components/fixtures/fixtures.component';
 import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
+  
   {path: '', component: AboutComponent, pathMatch: 'full' },
+  {path: 'callback', component: CallbackComponent},
   {path: 'selection', component: SquadComponent, canActivate: [ AuthGuard ]},
   {path: 'leaderboard', component: LeaderboardComponent, canActivate: [ AuthGuard ] },
-  {path: 'callback', component: CallbackComponent},
   {path: 'profile', component: ProfileComponent, canActivate: [ AuthGuard ] },
   {path: 'lineup', component: TeamComponent, canActivate: [ AuthGuard ] },
   {path: 'rules', component: RulesComponent},
   {path: 'fixtures', component: FixturesComponent},
-
+  
   /*
+
   {path: 'selection', redirectTo: '/maintenance'},
   {path: 'leaderboard', redirectTo: '/maintenance'},
-  {path: 'callback', redirectTo: '/maintenance'},
   {path: 'profile', redirectTo: '/maintenance'},
   {path: 'lineup', redirectTo: '/maintenance'},
   {path: 'rules', redirectTo: '/maintenance'},
