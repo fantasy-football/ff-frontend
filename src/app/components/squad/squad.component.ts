@@ -121,7 +121,7 @@ export class SquadComponent implements OnInit {
     this.budgetExeeded = false;
     this.createdSquad = false;
 
-    this.disabledTeams = ['KSA', 'RUS', 'EGY', 'URU', 'MAR', 'IRN', 'ESP', 'POR', 'FRA', 'AUS', 'ARG', 'ISL', 'PER', 'DEN', 'CRO', 'NGA'];
+    this.disabledTeams = ['KSA', 'RUS', 'EGY', 'URU', 'MAR', 'IRN', 'ESP', 'POR', 'FRA', 'AUS', 'ARG', 'ISL', 'PER', 'DEN', 'CRO', 'NGA', 'SRB', 'CRC', 'GER', 'MEX', 'BRA', 'SUI'];
 
     this.teamCounter = new Array<number>(32).fill(0);
 
