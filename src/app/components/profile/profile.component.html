@@ -4,7 +4,7 @@
       <div class="profileContent" *ngIf="user">
         <div ><img src={{user.pic}} alt = "loading" class = "profilePic"></div>
         <div class = "username">{{ user.name }}</div>
-        <div class = "userpoints">{{ user.score }}</div>
+        <div class = "userpoints"><img class="scoreIcon" src="../../../assets/scoreIcon.png" alt="">{{ user.score }}</div>
       </div>
     </div>
   </div>
