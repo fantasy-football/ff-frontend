@@ -1,66 +1,91 @@
-<h1 class="routeHeader">Rules</h1>
+<img src="../../../assets/custombanner.png" class="customBanner" alt="">
+
+<h1 class="routeHeader">Structure</h1>
 
 <div class = "stageOne">
 <div class="timeLine">Group Stage</div>
-<div class="limit"> Max 3 players from a single team </div>
+<div class="limit"> Max 3 players from a single team. </div>
 <div class="content">Here there would be 3 rounds covering the group stage.</div>
 </div>
 
-<div class="stageTwo">
-<div class="timeLine">Knockout Stage</div>
-<div class="limit"> Max 4 players from a single team </div>
-<div class="content"> Here there would be a single round corresponding to round of 16 fixtures.</div>
+<div class="stageTwo" id="evenStage">
+<div class="timeLine" id="darkTimeline">Knockout Stage</div>
+<div class="limit" id="darkLimit"> Max 4 players from a single team. </div>
+<div class="content" id="darkContent"> Here there would be a single round corresponding to round of 16 fixtures.</div>
 </div>
 
 <div class="stageThree">
 <div class="timeLine">Quarterfinal Stage</div>
- <div class="limit">Max 5 players from a single team </div> 
+ <div class="limit">Max 5 players from a single team. </div> 
 <div class="content"> Here there would be a single round corresponding to quarter final fixtures.</div>
 </div>
 
-<div class="stageFour">
-<div class="timeLine"> Semifinal Stage </div>
-<div class="limit"> Max 6 players from a single team </div>
-<div class="content">Here there would be a single round corresponding to the semi final fixtures.</div>
+<div class="stageFour" id="evenStage">
+<div class="timeLine" id="darkTimeline"> Semifinal Stage </div>
+<div class="limit" id="darkLimit"> Max 6 players from a single team. </div>
+<div class="content" id="darkContent">Here there would be a single round corresponding to the semi final fixtures.</div>
 </div>
 
 <div class="stageFive">
 <div class="timeLine">Final Stage </div>
-<div class="limit"> Max 8 players from a single team </div> 
+<div class="limit"> Max 8 players from a single team. </div> 
 <div class="content">Here there would be a single round corresponding to the final fixture.</div>
 </div>
 
-<div class = "rulesHeader">
-    <div class = "rulesPositive">
-        <div class= "rulesSubHeadText">Gain Rule</div>
-        
-        <div class="gainRule">Playing 30 mins in a match - 1 , 2(60 mins)</div>
-        <div class="gainRule">Scoring a goal - 5</div>
-        <div class="gainRule">Making an assist - 3</div>
-        <div class="gainRule">Keeping a clean sheet - 4 <br> (gk's and defenders only)</div>
-        <div class="gainRule">Saving a penalty - 3</div>
-        <div class="gainRule">GK atleast 3 pivotal saves - 2</div>
-        <div class="gainRule">Man of the match - 3</div>
-    </div>
-    <div class="rulesNegative">
-        <div class="rulesSubHeadText">Loss Rule</div>
+<h1 class="routeHeader"> Scoring <img class="img-fluid pointsIconMain" src="../../../assets/points.png" alt="">  </h1>
 
-        <div class="gainRule">Conceding a goal - 1, 2(3+)<br> 
-                (gk's and defenders only)</div>
-        <div class="gainRule">Receiving a yellow or red card - 1(yellow), 3(red)</div>
-        <div class="gainRule">Missing a penalty - 3</div>
-        <div class="gainRule">Scoring an own goal - 4</div>        
-        <div class="gainRule">Worst performing player - 2</div>
+<div class="container-fluid">
+    <div class = "rulesHeader row">
+        <div class = "rulesPositive col-lg-6 col-md-12 col-sm-12 col-12">
+            <div class= "rulesSubHeadText"> <img class="pointsIcon" src="../../../assets/pointsGained.png" alt=""> <p class="lossGain">GAIN</p></div>
+            
+            <div class="gainRule">Minutes played - 1 (30+) , 2 (60+)</div>
+            <div class="gainRule">Scoring a goal - 5</div>
+            <div class="gainRule">Making an assist - 3</div>
+            <div class="gainRule">Keeping a clean sheet - 4 <br> (gk's and defenders only)</div>
+            <div class="gainRule">Saving a penalty - 3</div>
+            <div class="gainRule">GK atleast 3 pivotal saves - 2</div>
+            <div class="gainRule">Man of the match - 3</div>
+        </div>
+        <div class="rulesNegative col-lg-6 col-md-12 col-sm-12 col-12">
+            <div class="rulesSubHeadText"><img class="pointsIcon" src="../../../assets/pointsLost.png" alt=""> <p class="lossGain">LOSS</p></div>
+
+            <div class="gainRule">Conceding a goal - 1, 2(3+)<br> 
+                    (gk's and defenders only)</div>
+            <div class="gainRule">Receiving a card - 1(yellow), 3(red)</div>
+            <div class="gainRule">Missing a penalty - 3</div>
+            <div class="gainRule">Scoring an own goal - 4</div>        
+            <div class="gainRule">Worst performing player - 2</div>
+        </div>
     </div>
 </div>
 
 <div class="playerCategory"> 
-    <div class="playerRoles" >Player Categories </div>
-    <div class="toprole roles">Captain - Will be awarded 3x points.</div>
-    <div class="roles">Vice Captain - Will be awarded 2x points.</div>
-    <div class="roles">Starting players - Will be awarded 1x points</div>
-    <div class="subrole roles">Substitutes - Will be awarded 0.5x points rounded by the floor function.</div>
-
+    <table>
+        <tr>
+            <th>ROLE</th>
+            <th>MULTIPLIER</th>
+        </tr>
+        <tbody>
+            <tr>
+                <td>Captain</td>
+                <td>3</td>
+                
+            </tr>
+            <tr>
+                <td>Vice Captain</td>
+                <td>2</td>       
+            </tr>
+            <tr>
+                <td>Starting</td>
+                <td>1</td>        
+            </tr>
+            <tr>
+                <td>Substitute</td>
+                <td>0.5</td>                
+            </tr>
+        </tbody>
+    </table>    
 </div>
 
 <div class = "squadFixed">
