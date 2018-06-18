@@ -29,11 +29,12 @@
 .username {
     text-align: center;
     font-size: 2em;
-    font-weight: bold;
+    font-weight: 500;
     color: black;
     background: #363c68;
     width: 100%;
     color: #fff;
+    letter-spacing: 1px;
 }
 
 .userpoints {
@@ -43,7 +44,8 @@
     font-size: 2em;
     background: #074a8e;
     width: 100%;
-    color: #fff
+    color: #fff;
+    letter-spacing: 2px;
 }
 
 .profileContainer {
