@@ -1,3 +1,7 @@
+.customBanner {
+    width: 100%;
+}
+
 .profileWrapper {
     display: flex;
     flex-direction: column;
@@ -17,7 +21,7 @@
 }
 
 .profilePic {
-    margin-top: 4em;
+    margin-top: 3em;
     height: auto;
     width: 300px;    
 }
@@ -34,7 +38,7 @@
 
 .userpoints {
     text-align: center;
-    font-weight: bold;
+    font-weight: 400;
     color: black;
     font-size: 2em;
     background: #074a8e;
@@ -43,10 +47,9 @@
 }
 
 .profileContainer {
-    background: #ae0106;
     min-height: 600px;
 }
 
 .scoreIcon {
-    max-width: 100px;
+    max-width: 110px;
 }
