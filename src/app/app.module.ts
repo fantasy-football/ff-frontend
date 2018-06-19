@@ -25,6 +25,8 @@ import { RulesComponent } from './components/rules/rules.component';
 import { Error404Component } from './components/error404/error404.component';
 import { MaintenanceComponent } from './components/maintenance/maintenance.component';
 import { FixturesComponent } from './components/fixtures/fixtures.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,8 @@ import { FixturesComponent } from './components/fixtures/fixtures.component';
     MatSelectModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     ApiService,
