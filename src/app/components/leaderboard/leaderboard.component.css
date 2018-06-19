@@ -2,19 +2,6 @@
     width: 100%;
 }
 
-.container-fluid {
-    margin: 0;
-    padding: 0;
-}
-
-.table {
-    font-size: 30px;
-    color: #b9b9b9;
-    display: table;
-    border: none;
-    padding: 0;
-    border-collapse: collapse;
-}
 
 .propic {
       width: 45px;
@@ -28,28 +15,35 @@
     margin-left: 2em;
 }
 
-td {
-    font-size: 0.7em;
-    color: #fff;
+table {
+    width: 100%;
+    table-layout: fixed;
+    display: table;
+    border-collapse: collapse;
     border: none;
-    
-}
-
-th {
-    background: #141515;
-    color: #ffff;
-    
 }
 
 tbody {
-    border: none;
+    width: 100%;
     padding: 0;
 }
 
-tr:nth-child(even) {
-    background: #1c1f1f;
+tr {
+    padding: 0;
 }
 
-tr:nth-child(odd) {
-    background: #272a2a;
+th {
+    text-align: center;
+    font-size: 1.5em;
+    letter-spacing: 3px;
+    color: #fff;
+    font-weight: 500;
+}
+
+td {
+    text-align: center;
+    width: 50%;
+    border: none;
+    font-size: 0.9em;
+    color: #fff;
 }

@@ -1,11 +1,13 @@
 <img class="customBanner" src="../../../assets/custombanner.png" alt="">
-<table class="table table-responsive thead-dark thead-striped">
-    <tr>
+<table class="table-dark table-striped">
+  <thead>
+     <tr>
       <th>#</th>
       <th>Name</th>
       <th>Points</th>
     </tr>
-    <tbody *ngIf="ranklist">
+  </thead>  
+  <tbody *ngIf="ranklist">
       <tr *ngFor="let record of ranklist; let i=index">
         <td>
           {{ record.rank }}
@@ -18,5 +20,5 @@
           <div class="points">{{ record.score }}</div>
         </td>
       </tr>
-    </tbody>
+  </tbody>
  </table>
