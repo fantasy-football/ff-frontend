@@ -2,21 +2,21 @@
 <table class="table-dark table-striped">
   <thead>
      <tr>
-      <th>#</th>
-      <th>Name</th>
-      <th>Points</th>
+      <th style="width: 15%">#</th>
+      <th class="rkName" style="width: 70%">Name</th>
+      <th style="width: 15%">Points</th>
     </tr>
   </thead>  
   <tbody *ngIf="ranklist">
       <tr *ngFor="let record of ranklist; let i=index">
-        <td>
+        <td style="text-align: center">
           {{ record.rank }}
         </td>
         <td>
           <img src="{{ record.pic }}" alt="" class="propic">
           {{ record.name }}
         </td>
-        <td>
+        <td style="text-align: center">
           <div class="points">{{ record.score }}</div>
         </td>
       </tr>
