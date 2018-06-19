@@ -12,13 +12,16 @@ import { Rank } from '../../services/interfaces/rank';
 export class LeaderboardComponent implements OnInit {
   ranklist: Rank[];
   fullRanklist: Rank[];
+  counter: number;
 
-  constructor(private auth: AuthService, private common: CommonService, private router: Router) { }
+  constructor(private auth: AuthService, private common: CommonService, private router: Router) { 
+	this.counter = 100;
+}
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-      console.log('Bottom');
+      console.log('Bottom', this.counter);
       this.loadUsers();
     }
   }
@@ -39,9 +42,10 @@ export class LeaderboardComponent implements OnInit {
   }
 
   loadUsers() {
-    for (let i = this.ranklist.length; i < Math.min(this.ranklist.length + 50, this.fullRanklist.length ); i++) {
+    for (let i = this.ranklist.length; i <= Math.min(this.counter, this.fullRanklist.length-1 ); i++) {
       this.ranklist.push(this.fullRanklist[i]);
     }
+    this.counter += 50;
   }
 
 }
