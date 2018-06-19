@@ -11,7 +11,6 @@
 }
 
 .profileContent {
-    margin-top: 4em;
     
     display: flex;
     flex-direction: column;
@@ -39,21 +38,29 @@
 
 .userpoints {
     text-align: center;
-    font-weight: 400;
+    font-weight: 700;
     color: black;
     font-size: 2em;
-    background: #a1ddf7;
+    background: #00ff87;
     width: 100%;
     color: black;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
 }
 
 .profileContainer {
-    min-height: 600px;
+    padding-top: 7%;
+    height: 100%;
     background: url(../../../assets/profileBackground.png) no-repeat;
     background-size: cover;
+    padding-bottom: 9%;
 }
 
 .scoreIcon {
     max-width: 110px;
+}
+
+@media screen and (max-width: 768px) {
+    .profileContainer {
+	padding-bottom: 30%;
+    }
 }

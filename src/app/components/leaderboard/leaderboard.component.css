@@ -5,7 +5,6 @@
 .container-fluid {
     margin: 0;
     padding: 0;
-    margin-top: 2em;
 }
 
 .table {
@@ -13,6 +12,8 @@
     color: #b9b9b9;
     display: table;
     border: none;
+    padding: 0;
+    border-collapse: collapse;
 }
 
 .propic {
@@ -42,6 +43,7 @@ th {
 
 tbody {
     border: none;
+    padding: 0;
 }
 
 tr:nth-child(even) {
