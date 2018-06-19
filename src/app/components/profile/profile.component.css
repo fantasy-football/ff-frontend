@@ -50,6 +50,8 @@
 
 .profileContainer {
     min-height: 600px;
+    background: url(../../../assets/profileBackground.png) no-repeat;
+    background-size: cover;
 }
 
 .scoreIcon {
