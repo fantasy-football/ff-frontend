@@ -36,8 +36,8 @@ th {
     letter-spacing: 2px;
     color: #fff;
     font-weight: 500; 
-    margin-top: 30px;
-    margin-bottom: 30px;
+    padding-top: 35px;
+    padding-bottom: 35px;
     text-align: center;
 }
 
@@ -52,7 +52,7 @@ td {
     text-align: left;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 320px) {
     .propic {
         width: 60px;
         height: 60px;
@@ -63,7 +63,7 @@ td {
     }
 
     th {
-        font-size: 1.5em;
+        font-size: 1em;
         letter-spacing: 1px;
         color: #fff;
         font-weight: 500; 
@@ -81,5 +81,46 @@ td {
 
     .rkName {
         text-align: left;
+    }
+    
+    .pts {
+	text-align: left;
+    }
+}
+
+
+@media screen and (max-width: 992px) {
+    .propic {
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+        z-index: 1;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    th {
+        font-size: 1em;
+        letter-spacing: 1px;
+        color: #fff;
+        font-weight: 500; 
+        margin-top: 40px;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    td {
+
+        border: none;
+        font-size: 0.9em;
+        color: #fff;
+    }
+
+    .rkName {
+        text-align: left;
+    }
+    
+    .pts {
+	text-align: center;
     }
 }

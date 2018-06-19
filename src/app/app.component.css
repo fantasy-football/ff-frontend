@@ -39,6 +39,10 @@
     margin-top: 20px;
     max-height: 4em;
     }
+
+    .homeLink {
+    display: none;
+    }
 }
 
 
@@ -80,6 +84,7 @@
     {
         height: 100%;
         padding: 0;
+	min-height: 50px;
     }
     .navbar-toggler
     {

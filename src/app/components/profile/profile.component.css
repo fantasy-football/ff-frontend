@@ -38,12 +38,12 @@
 
 .userpoints {
     text-align: center;
-    font-weight: 700;
-    color: black;
-    font-size: 2em;
-    background: #00ff87;
+    font-weight: 400;
+    color: #fff;
+    font-size: 1.6em;
+    background: #334;
     width: 100%;
-    color: black;
+    color: #fff;
     letter-spacing: 2px;
 }
 

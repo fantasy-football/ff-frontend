@@ -47,7 +47,8 @@
 
   <div class="navbar-collapse navbar-default collapse" id="navbarContent" [ngbCollapse]="isCollapsed">
     <ul class="navbar-nav mr-auto">
-        <li><a class="nav-link" href="/profile" (click)="toggleState()" [routerLink]="['profile']">Profile</a></li>
+	<li><a class="nav-link homeLink" href="/" (click)="toggleState()" [routerLink]="['']">Home</a></li>
+	<li><a class="nav-link" href="/profile" (click)="toggleState()" [routerLink]="['profile']">Profile</a></li>
         <li><a class="nav-link" href="/rules" (click)="toggleState()" [routerLink]="['rules']">Rules</a></li>
         <li><a class="nav-link" href="/selection" (click)="toggleState()" [routerLink]="['selection']">Squad</a></li>
         <li><a class="nav-link" href="/fixtures" (click)="toggleState()" [routerLink]="['fixtures']">Fixtures</a></li>
