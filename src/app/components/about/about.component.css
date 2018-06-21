@@ -6,6 +6,10 @@
     width: 100%;
 }
 
+.partnerLogo img {
+    width: 100%;
+}
+
 .aboutCardContainer {
     background: white;
     margin-right: 0;
@@ -49,10 +53,9 @@
 @media screen and (min-width: 993px) 
 {
     
-
     .aboutCardContainer {
         
-        margin-top: 4em;
+        margin-top: 3em;
     }
 
     .loginContainer {
