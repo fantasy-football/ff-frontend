@@ -121,7 +121,7 @@ export class SquadComponent implements OnInit {
     this.budgetExeeded = false;
     this.createdSquad = false;
 
-    this.disabledTeams = ['KSA', 'RUS', 'EGY', 'URU', 'MAR', 'IRN', 'ESP', 'POR', 'FRA', 'AUS',  'PER', 'DEN'];
+    this.disabledTeams = [];
 
     this.teamCounter = new Array<number>(32).fill(0);
 
@@ -190,11 +190,11 @@ export class SquadComponent implements OnInit {
 
   addPlayer(player: Player) {
     if (this.balance >= player.value) {
-      if ( this.teamCounter[player.teamId - 1] > 3 ) {
+      if ( this.teamCounter[player.teamId - 1] > 4 ) {
         // console.log('This should not happen, resetting squad');
         this.squad = [];
-      } else if ( this.teamCounter[player.teamId - 1] === 3) {
-        // console.log('Cant have more than 3 players from 1 team');
+      } else if ( this.teamCounter[player.teamId - 1] === 4) {
+        // console.log('Cant have more than 4 players from 1 team');
         this.squadLimitExceeded = true;
       } else {
         if (player.position === 'DEF') {
