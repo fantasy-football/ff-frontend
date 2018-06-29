@@ -5,6 +5,7 @@ import { Player } from '../../services/interfaces/player';
 import { ApiService } from '../../services/api.service';
 import { CommonService } from '../../services/common.service';
 import { Router } from '@angular/router';
+import { User } from '../../services/interfaces/user';
 
 @Component({
   selector: 'app-squad',
@@ -17,6 +18,8 @@ export class SquadComponent implements OnInit {
 
   players: Player[];
   filteredPlayers: Player[];
+  
+  user: User;
 
   def: Player[];
   mid: Player[];
@@ -132,8 +135,11 @@ export class SquadComponent implements OnInit {
   ngOnInit() {
     this.commonService.getUserDetails()
     .subscribe(res => {
+      this.user = res;
       if (res['flag']) {
         this.router.navigate(['/lineup']);
+      } else {
+        this.balance = this.user.balance;
       }
     });
 
@@ -146,10 +152,7 @@ export class SquadComponent implements OnInit {
   }
 
   applyDisableFilter(): void {
-    for ( let i = 0; i < this.disabledTeams.length; i++) {
-      this.players = this.players.filter(object => object.trigram !== this.disabledTeams[i]);
-      this.filteredPlayers = this.filteredPlayers.filter(object => object.trigram !== this.disabledTeams[i]);
-    }
+    this.players.sort(function(a,b) { return (a.points < b.points) ? 1 : 0; });
   }
 
   checkMobileDevice(): void {
