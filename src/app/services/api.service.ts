@@ -34,6 +34,13 @@ export class ApiService {
     );
   }
 
+  getOppLineup(payload) {
+  return this.http.post(API_ROOT + 'oppLineup',
+                 JSON.stringify(payload), {withCredentials: true})
+                 .pipe(map(res => res['data']),
+                 catchError(this.handleError));
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
