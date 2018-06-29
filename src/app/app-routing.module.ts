@@ -10,6 +10,7 @@ import { RulesComponent } from './components/rules/rules.component';
 import { Error404Component } from './components/error404/error404.component';
 import { MaintenanceComponent } from './components/maintenance/maintenance.component';
 import { FixturesComponent } from './components/fixtures/fixtures.component';
+import { LineupComponent } from './components/lineup/lineup.component';
 
 import { AuthGuard } from './services/auth.guard';
 
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'leaderboard', component: LeaderboardComponent, canActivate: [ AuthGuard ] },
   {path: 'profile', component: ProfileComponent, canActivate: [ AuthGuard ] },
   {path: 'lineup', component: TeamComponent, canActivate: [ AuthGuard ] },
+  {path: 'lineup/:id', component: LineupComponent, canActivate: [ AuthGuard ] },
   {path: 'rules', component: RulesComponent},
   {path: 'fixtures', component: FixturesComponent},
   
