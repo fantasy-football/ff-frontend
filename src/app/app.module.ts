@@ -27,6 +27,7 @@ import { MaintenanceComponent } from './components/maintenance/maintenance.compo
 import { FixturesComponent } from './components/fixtures/fixtures.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { LineupComponent } from './components/lineup/lineup.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { environment } from '../environments/environment';
     RulesComponent,
     Error404Component,
     MaintenanceComponent,
-    FixturesComponent
+    FixturesComponent,
+    LineupComponent
   ],
   imports: [
     BrowserModule,

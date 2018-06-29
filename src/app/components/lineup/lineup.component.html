@@ -1,0 +1,43 @@
+<img class="customBanner" src="../../../assets/custombanner.png" alt="">
+<div class="pitchContainer">
+  <div class="pitchBox">
+    <div class="pitch">
+      <img class="img-fluid" src="../../../assets/pitch2.png" alt="">
+    </div>
+    <div class="gkPitchBox">
+      <div class="playerIconContainer" *ngFor = "let i of gk">
+        <img class="teamIconPitch" src="../../../assets/teams/{{i.trigram}}.png" alt="">
+        <p class="playerName">{{i.name}}</p>
+        <p class="playerPoints">{{i.points}}</p>
+      </div>
+    </div>
+    <div class="defPitchBox">
+      <div class="playerIconContainer" *ngFor = "let i of def">
+        <img class="teamIconPitch" src="../../../assets/teams/{{i.trigram}}.png" alt="">
+        <p class="playerName">{{i.name}}</p>
+        <p class="playerPoints">{{i.points}}</p>
+      </div>
+    </div>
+    <div class="midPitchBox">
+      <div class="playerIconContainer" *ngFor = "let i of mid">
+        <img class="teamIconPitch" src="../../../assets/teams/{{i.trigram}}.png" alt="">
+        <p class="playerName">{{i.name}}</p>
+        <p class="playerPoints">{{i.points}}</p>
+      </div>
+    </div>
+    <div class="fwdPitchBox">
+      <div class="playerIconContainer" *ngFor = "let i of fwd">
+        <img class="teamIconPitch" src="../../../assets/teams/{{i.trigram}}.png" alt="">
+        <p class="playerName">{{i.name}}</p>
+        <p class="playerPoints">{{i.points}}</p>
+      </div>
+    </div>
+    <div class="subBox">
+      <div class="playerIconContainer" *ngFor = "let i of subs">
+        <img class="teamIconPitch" src="../../../assets/teams/{{i.trigram}}.png" alt="">
+        <p class="playerName">{{i.name}}</p>
+        <p class="playerPoints">{{i.points}}</p>
+      </div>
+    </div>
+  </div>
+</div>
