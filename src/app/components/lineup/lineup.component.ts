@@ -30,15 +30,17 @@ export class LineupComponent implements OnInit {
     this.subs = [];
 
     this.route.params.subscribe( params => {
-        this.userId = params;
-        getLineup(); }
+        this.userId = params['id'];
+        this.getLineup(); }
     );
   }
 
   ngOnInit() {
 
-  getLineup() {
-    const payload = {'id': this.user_id}
+ }
+ 
+ getLineup() {
+    const payload = {'id': this.userId};
 
     this.apiService.getOppLineup(payload)
     .subscribe(res => {
@@ -47,7 +49,7 @@ export class LineupComponent implements OnInit {
       this.extract();
       });
     }
-  }
+  
 
   extract() {
     for (let i = 0; i < 11; i++) {
