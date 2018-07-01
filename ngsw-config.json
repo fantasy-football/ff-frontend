@@ -25,12 +25,13 @@
     {
 	"name": "players",
 	"urls": [
-		"https://wcfl.excelmec.org/v1/api/players"
+		"https://wcfl.excelmec.org/v1/api/players",
+                "https://wcfl.excelmec.org/v1/ranklist"
 	 ],
 	 "cacheConfig": {
 	   "maxSize": 1,
 	   "maxAge": "8h",
-           "timeout": "10s",
+           "timeout": "2s",
 	   "strategy": "freshness"
     	}
     }

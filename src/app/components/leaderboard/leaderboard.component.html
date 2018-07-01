@@ -14,7 +14,7 @@
         </td>
         <td>
           <img src="{{ record.pic }}" alt="" class="propic">
-          {{ record.name }}
+          <a (click)="viewSquad(record)">{{ record.name }}</a>
         </td>
         <td style="text-align: center">
           <div class="points">{{ record.score }}</div>

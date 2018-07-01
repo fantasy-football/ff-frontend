@@ -45,9 +45,11 @@ export class LineupComponent implements OnInit {
     this.apiService.getOppLineup(payload)
     .subscribe(res => {
       this.lineup = res;
-      console.log(res);
+      //console.log(res);
       this.extract();
-      });
+      },
+      error => { this.router.navigate(['/leaderboard']); }
+     );
     }
   
 

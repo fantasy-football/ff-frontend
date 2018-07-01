@@ -16,12 +16,12 @@ export class LeaderboardComponent implements OnInit {
 
   constructor(private auth: AuthService, private common: CommonService, private router: Router) { 
 	this.counter = 100;
-}
+  }
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-      console.log('Bottom', this.counter);
+      // console.log('Bottom', this.counter);
       this.loadUsers();
     }
   }
@@ -42,10 +42,17 @@ export class LeaderboardComponent implements OnInit {
   }
 
   loadUsers() {
-    for (let i = this.ranklist.length; i <= Math.min(this.counter, this.fullRanklist.length-1 ); i++) {
-      this.ranklist.push(this.fullRanklist[i]);
+    if (this.ranklist !== null) {
+      for (let i = this.ranklist.length; i <= Math.min(this.counter, this.fullRanklist.length-1 ); i++) {
+      	this.ranklist.push(this.fullRanklist[i]);
+      }
+      this.counter += 50;
     }
-    this.counter += 50;
+  }
+
+  viewSquad(record: Rank) {
+    // console.log(record);
+    this.router.navigate(['/lineup/' + record.id]);
   }
 
 }

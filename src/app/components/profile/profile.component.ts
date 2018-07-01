@@ -15,15 +15,15 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     if ( this.auth.authenticated() ) {
-      console.log('Authenticated');
+      // console.log('Authenticated');
     } else {
-      console.log('Not authenticated');
+      // console.log('Not authenticated');
     }
 
     this.common.getUserDetails()
     .subscribe(res => {
       this.user = res;
-      console.log(this.user);
+      // console.log(this.user);
     });
   }
 
