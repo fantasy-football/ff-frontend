@@ -39,6 +39,15 @@ export class TeamComponent implements OnInit {
 
   extract() {
     for (let i = 0; i < 11; i++) {
+      
+      if (this.lineup[i].isCaptain) {
+        this.lineup[i].name += ' (c)';
+      }
+      
+      if (this.lineup[i].isVC) {
+        this.lineup[i].name += ' (vc)';
+      }
+      
       if (this.lineup[i].position === 'GK') {
         this.gk.push(this.lineup[i]);
         console.log(this.lineup[i].isSub);
@@ -53,6 +62,15 @@ export class TeamComponent implements OnInit {
     }
 
     for (let i = 11; i < 15; i++) {
+      
+      if (this.lineup[i].isCaptain) {
+        this.lineup[i].name += ' (c)';
+      }
+      
+      if (this.lineup[i].isVC) {
+        this.lineup[i].name += ' (vc)';
+      }
+      
       this.subs.push(this.lineup[i]);
     }
   }

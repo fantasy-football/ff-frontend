@@ -2,6 +2,14 @@
     width: 100%;
 }
 
+.leaderboardHeader {
+    background: #de264a;
+    color: #fff;
+    max-height: 2.5em;
+    font-size : 0.8em;
+    font-weight: bold;
+    text-align: center;
+}
 
 .propic {
       width: 80px;
@@ -123,4 +131,9 @@ td {
     .pts {
 	text-align: center;
     }
+}
+
+.recordName {
+    cursor: pointer;
+    
 }
