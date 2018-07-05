@@ -193,11 +193,11 @@ export class SquadComponent implements OnInit {
 
   addPlayer(player: Player) {
     if (this.balance >= player.value) {
-      if ( this.teamCounter[player.teamId - 1] > 4 ) {
+      if ( this.teamCounter[player.teamId - 1] > 5 ) {
         // console.log('This should not happen, resetting squad');
         this.squad = [];
-      } else if ( this.teamCounter[player.teamId - 1] === 4) {
-        // console.log('Cant have more than 4 players from 1 team');
+      } else if ( this.teamCounter[player.teamId - 1] === 5) {
+        // console.log('Cant have more than 5 players from 1 team');
         this.squadLimitExceeded = true;
       } else {
         if (player.position === 'DEF') {
