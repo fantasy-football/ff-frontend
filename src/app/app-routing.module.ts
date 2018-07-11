@@ -22,7 +22,7 @@ const routes: Routes = [
   {path: 'leaderboard', component: LeaderboardComponent, canActivate: [ AuthGuard ] },
   {path: 'profile', component: ProfileComponent, canActivate: [ AuthGuard ] },
   {path: 'lineup', component: TeamComponent, canActivate: [ AuthGuard ] },
-  {path: 'lineup/:id', component: Error404Component, canActivate: [ AuthGuard ] },
+  {path: 'lineup/:id', component: LineupComponent, canActivate: [ AuthGuard ] },
   {path: 'rules', component: RulesComponent},
   {path: 'fixtures', component: FixturesComponent},
   
