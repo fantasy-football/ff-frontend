@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { retry, catchError, map } from 'rxjs/operators';
 
-const COMMON_ROOT = '//wcfl.excelmec.org/v1';
+const COMMON_ROOT = '//wcfl.excelmec.org/v3';
 
 @Injectable({
   providedIn: 'root'

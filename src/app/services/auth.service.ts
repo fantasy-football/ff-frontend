@@ -8,7 +8,7 @@ import { retry, catchError, map } from 'rxjs/operators';
 import { AUTH_CONFIG } from '../../environments/auth-env';
 import { BehaviorSubject } from 'rxjs';
 
-const COMMON_ROOT = '//wcfl.excelmec.org/v1';
+const COMMON_ROOT = '//wcfl.excelmec.org/v3';
 
 @Injectable({
   providedIn: 'root'
