@@ -11,6 +11,6 @@ List of people who have contributed to the development of this repository,
 ## Developers ##
 ---
 
-[Chitra C.V](https://github.com/Chithracv) 
+[C.V Chitra](https://github.com/Chithracv) 
 
-[Gayathri Anil](https://github.com/GayathriAnil)
+[Gayathri K.A](https://github.com/GayathriAnil)
